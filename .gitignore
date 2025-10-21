@@ -1,0 +1,76 @@
+# ===================================
+# Dependencias de Node.js
+# ===================================
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+package-lock.json
+yarn.lock
+
+# ===================================
+# Archivos de sistema operativo
+# ===================================
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# Linux
+*~
+.directory
+
+# ===================================
+# IDEs y Editores
+# ===================================
+# JetBrains (IntelliJ, WebStorm, etc.)
+.idea/
+*.iml
+*.iws
+*.ipr
+.idea_modules/
+
+# Visual Studio Code
+.vscode/
+*.code-workspace
+.history/
+
+# ===================================
+# Archivos temporales y cache
+# ===================================
+*.log
+*.tmp
+*.temp
+*.cache
+*.swp
+*.swo
+*~
+
+# ===================================
+# Archivos de build y distribución
+# ===================================
+dist/
+build/
+.tmp/
+.cache/
+
+# ===================================
+# Archivos de coverage y testing
+# ===================================
+coverage/
+.nyc_output/
+*.lcov
+
+# ===================================
+# Archivos específicos del proyecto
+# ===================================
+# Mantener logo.png visible (no ignorar)
+# Archivos de diseño originales (opcional)
+*.fig

@@ -1,0 +1,1455 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="HackQori - Protege tu negocio con soluciones avanzadas de ciberseguridad">
+    <meta name="keywords" content="ciberseguridad, seguridad informática, pentesting, consultoría">
+    <meta name="author" content="HackQori">
+    <title>HackQori - Soluciones Avanzadas de Ciberseguridad</title>
+
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/cookie-consent.css">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="img/logo.png">
+</head>
+<body>
+
+    <!-- Cookie Consent Banner -->
+    <div id="cookieConsent" class="cookie-consent">
+        <div class="cookie-content">
+            <div class="cookie-icon">
+                <i class="bi bi-shield-check"></i>
+            </div>
+            <div class="cookie-text">
+                <h5>🍪 Uso de Cookies</h5>
+                <p>Utilizamos cookies propias y de terceros para mejorar tu experiencia de navegación, analizar el tráfico del sitio y personalizar el contenido. Puedes aceptar todas las cookies o configurar tus preferencias.</p>
+            </div>
+            <div class="cookie-buttons">
+                <button id="cookieSettings" class="btn btn-outline-light btn-sm">
+                    <i class="bi bi-gear"></i> Configurar
+                </button>
+                <button id="acceptCookies" class="btn btn-primary btn-sm">
+                    <i class="bi bi-check-circle"></i> Aceptar todas
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Cookie Settings Modal -->
+    <div id="cookieModal" class="cookie-modal">
+        <div class="cookie-modal-content">
+            <div class="cookie-modal-header">
+                <h4><i class="bi bi-shield-check"></i> Configuración de Cookies</h4>
+                <button class="cookie-modal-close" id="closeCookieModal">
+                    <i class="bi bi-x-lg"></i>
+                </button>
+            </div>
+            <div class="cookie-modal-body">
+                <p class="mb-4">Respetamos tu privacidad y te permitimos controlar qué cookies deseas permitir. Las cookies esenciales son necesarias para el funcionamiento básico del sitio y no pueden desactivarse.</p>
+
+                <div class="cookie-category">
+                    <div class="cookie-category-header">
+                        <div>
+                            <h6><i class="bi bi-shield-fill-check text-success"></i> Cookies Esenciales</h6>
+                            <p class="small text-muted">Necesarias para el funcionamiento del sitio web</p>
+                        </div>
+                        <div class="form-check form-switch">
+                            <input class="form-check-input" type="checkbox" id="essentialCookies" checked disabled>
+                            <label class="form-check-label text-muted small">Siempre activas</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="cookie-category">
+                    <div class="cookie-category-header">
+                        <div>
+                            <h6><i class="bi bi-graph-up text-primary"></i> Cookies Analíticas</h6>
+                            <p class="small text-muted">Nos ayudan a entender cómo interactúas con el sitio web</p>
+                        </div>
+                        <div class="form-check form-switch">
+                            <input class="form-check-input" type="checkbox" id="analyticsCookies">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="cookie-category">
+                    <div class="cookie-category-header">
+                        <div>
+                            <h6><i class="bi bi-bullseye text-warning"></i> Cookies de Marketing</h6>
+                            <p class="small text-muted">Utilizadas para mostrar anuncios relevantes</p>
+                        </div>
+                        <div class="form-check form-switch">
+                            <input class="form-check-input" type="checkbox" id="marketingCookies">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-4">
+                    <a href="#politica-privacidad" class="text-decoration-none small">
+                        <i class="bi bi-file-text"></i> Leer Política de Privacidad y Cookies
+                    </a>
+                </div>
+            </div>
+            <div class="cookie-modal-footer">
+                <button id="rejectAll" class="btn btn-outline-secondary">Rechazar todas</button>
+                <button id="savePreferences" class="btn btn-primary">Guardar preferencias</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top shadow-sm" id="mainNav">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center" href="#home">
+                <img src="img/logo.png" alt="HackQori Logo" class="logo-img">
+                <span class="brand-text ms-2">HACKQORI</span>
+            </a>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto align-items-center">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#inicio">Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#nosotros">Nosotros</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#servicios">Servicios</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#clientes">Clientes</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contacto">Contacto</a>
+                    </li>
+                    <li class="nav-item ms-lg-3">
+                        <a class="btn btn-primary btn-contact" href="#contacto">Agendar una cita</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero/Banner Section -->
+    <section id="hero" class="hero-section">
+        <div class="container">
+            <div class="row align-items-center min-vh-100">
+                <div class="col-lg-6 hero-content">
+                    <h1 class="hero-title mb-4">
+                        Protege tu negocio con soluciones avanzadas de
+                        <span class="text-highlight">ciberseguridad</span>
+                    </h1>
+                    <p class="hero-description mb-4">
+                        Protegemos tu infraestructura digital con las mejores prácticas y tecnologías de seguridad,
+                        garantizando la continuidad de tu negocio.
+                    </p>
+                    <div class="hero-buttons d-flex flex-wrap gap-3">
+                        <a href="#contacto" class="btn btn-primary btn-lg btn-hero">
+                            Solicitar una evaluación
+                            <i class="bi bi-arrow-right ms-2"></i>
+                        </a>
+                        <a href="#servicios" class="btn btn-outline-dark btn-lg btn-hero-outline">
+                            Ver servicios
+                        </a>
+                    </div>
+
+                    <!-- Stats -->
+                    <div class="hero-stats mt-5">
+                        <div class="row g-4">
+                            <div class="col-4">
+                                <div class="stat-item">
+                                    <h3 class="stat-number" data-target="150">0</h3>
+                                    <p class="stat-label">Clientes Protegidos</p>
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div class="stat-item">
+                                    <h3 class="stat-number" data-target="500">0</h3>
+                                    <p class="stat-label">Auditorías Realizadas</p>
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div class="stat-item">
+                                    <h3 class="stat-number" data-target="99">0</h3>
+                                    <p class="stat-label">% Satisfacción</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-6">
+                    <div class="hero-image-container">
+                        <div class="floating-card card-1">
+                            <i class="bi bi-shield-check"></i>
+                            <span>Protección 24/7</span>
+                        </div>
+                        <div class="floating-card card-2">
+                            <i class="bi bi-graph-up-arrow"></i>
+                            <span>Monitoreo Continuo</span>
+                        </div>
+                        <div class="floating-card card-3">
+                            <i class="bi bi-lock-fill"></i>
+                            <span>Cifrado Avanzado</span>
+                        </div>
+
+                        <div class="hero-main-graphic">
+                            <div class="security-layers">
+                                <div class="layer layer-1"></div>
+                                <div class="layer layer-2"></div>
+                                <div class="layer layer-3"></div>
+                                <div class="center-icon">
+                                    <i class="bi bi-shield-fill-check"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Scroll Indicator -->
+        <div class="scroll-indicator">
+            <div class="scroll-icon">
+                <i class="bi bi-mouse"></i>
+            </div>
+            <p>Scroll para explorar</p>
+        </div>
+    </section>
+
+    <!-- Sobre Nosotros Section -->
+    <section id="nosotros" class="about-section py-5">
+        <div class="container">
+            <div class="row justify-content-center mb-5">
+                <div class="col-lg-8 text-center">
+                    <h2 class="section-title animate-on-scroll">Sobre Nosotros</h2>
+                    <p class="section-description animate-on-scroll">
+                        En <strong>HACKQORI</strong>, somos una empresa especializada en ciberseguridad con más de 10 años de experiencia.
+                        Te ofrecemos soluciones integrales para proteger tu infraestructura digital contra amenazas cibernéticas,
+                        garantizando la seguridad y continuidad de tu negocio.
+                    </p>
+                </div>
+            </div>
+
+            <div class="row align-items-center g-5">
+                <!-- Image/Video Column -->
+                <div class="col-lg-6 animate-on-scroll">
+                    <div class="about-image-wrapper">
+                        <div class="about-image-bg"></div>
+                        <div class="about-image-content">
+                            <div class="video-placeholder">
+                                <i class="bi bi-play-circle-fill"></i>
+                                <p>Ver nuestro video corporativo</p>
+                            </div>
+                        </div>
+                        <!-- Decorative Elements -->
+                        <div class="about-badge">
+                            <div class="badge-content">
+                                <h4>10+</h4>
+                                <p>Años de<br>Experiencia</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Content Column -->
+                <div class="col-lg-6">
+                    <div class="about-content">
+                        <!-- Misión -->
+                        <div class="about-item animate-on-scroll">
+                            <div class="about-icon">
+                                <i class="bi bi-bullseye"></i>
+                            </div>
+                            <div class="about-text">
+                                <h3>Misión</h3>
+                                <p>
+                                    Brindar servicios profesionales de ciberseguridad que protejan los activos digitales de nuestros clientes,
+                                    utilizando las mejores prácticas y tecnologías de vanguardia para garantizar la confidencialidad,
+                                    integridad y disponibilidad de la información.
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Visión -->
+                        <div class="about-item animate-on-scroll">
+                            <div class="about-icon">
+                                <i class="bi bi-eye-fill"></i>
+                            </div>
+                            <div class="about-text">
+                                <h3>Visión</h3>
+                                <p>
+                                    Ser reconocidos como la empresa líder en ciberseguridad a nivel nacional e internacional,
+                                    siendo el aliado estratégico de confianza para organizaciones que buscan proteger su infraestructura
+                                    digital ante las amenazas del mundo conectado.
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Valores (Optional) -->
+                        <div class="about-values mt-4 animate-on-scroll">
+                            <div class="row g-3">
+                                <div class="col-6">
+                                    <div class="value-badge">
+                                        <i class="bi bi-shield-check"></i>
+                                        <span>Integridad</span>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="value-badge">
+                                        <i class="bi bi-award"></i>
+                                        <span>Excelencia</span>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="value-badge">
+                                        <i class="bi bi-people"></i>
+                                        <span>Compromiso</span>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="value-badge">
+                                        <i class="bi bi-lightbulb"></i>
+                                        <span>Innovación</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certificaciones Section -->
+    <section id="certificaciones" class="certifications-section py-5">
+        <div class="container">
+            <div class="row align-items-center g-5">
+                <!-- Content Column -->
+                <div class="col-lg-6 order-lg-1 order-2">
+                    <div class="certifications-content">
+                        <h2 class="section-title mb-4 animate-on-scroll">
+                            Por qué son importantes las certificaciones en ciberseguridad
+                        </h2>
+                        <p class="section-description mb-4 animate-on-scroll">
+                            Las certificaciones en ciberseguridad son fundamentales para garantizar que los profesionales
+                            que protegen tu infraestructura cuentan con los conocimientos y habilidades necesarias para
+                            enfrentar las amenazas actuales.
+                        </p>
+
+                        <!-- Certification List -->
+                        <div class="certification-list">
+                            <div class="certification-item animate-on-scroll">
+                                <div class="cert-icon">
+                                    <i class="bi bi-patch-check-fill"></i>
+                                </div>
+                                <div class="cert-content">
+                                    <h4>ISO/IEC 27001</h4>
+                                    <p>Estándar internacional para sistemas de gestión de seguridad de la información.</p>
+                                </div>
+                            </div>
+
+                            <div class="certification-item animate-on-scroll">
+                                <div class="cert-icon">
+                                    <i class="bi bi-patch-check-fill"></i>
+                                </div>
+                                <div class="cert-content">
+                                    <h4>CISSP</h4>
+                                    <p>Certificación reconocida mundialmente para profesionales de seguridad de la información.</p>
+                                </div>
+                            </div>
+
+                            <div class="certification-item animate-on-scroll">
+                                <div class="cert-icon">
+                                    <i class="bi bi-patch-check-fill"></i>
+                                </div>
+                                <div class="cert-content">
+                                    <h4>CompTIA Security+</h4>
+                                    <p>Certificación fundamental que valida conocimientos básicos de seguridad IT.</p>
+                                </div>
+                            </div>
+
+                            <div class="certification-item animate-on-scroll">
+                                <div class="cert-icon">
+                                    <i class="bi bi-patch-check-fill"></i>
+                                </div>
+                                <div class="cert-content">
+                                    <h4>CEH (Certified Ethical Hacker)</h4>
+                                    <p>Valida habilidades en técnicas de hacking ético y pruebas de penetración.</p>
+                                </div>
+                            </div>
+
+                            <div class="certification-item animate-on-scroll">
+                                <div class="cert-icon">
+                                    <i class="bi bi-patch-check-fill"></i>
+                                </div>
+                                <div class="cert-content">
+                                    <h4>CISM</h4>
+                                    <p>Certificación para profesionales que gestionan y diseñan programas de seguridad empresarial.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Image/Graphic Column -->
+                <div class="col-lg-6 order-lg-2 order-1">
+                    <div class="certifications-graphic animate-on-scroll">
+                        <div class="cert-graphic-bg"></div>
+                        <div class="cert-badges-container">
+                            <!-- Certification Badges -->
+                            <div class="cert-badge cert-badge-1">
+                                <div class="badge-inner">
+                                    <i class="bi bi-shield-fill-check"></i>
+                                    <span>ISO 27001</span>
+                                </div>
+                            </div>
+                            <div class="cert-badge cert-badge-2">
+                                <div class="badge-inner">
+                                    <i class="bi bi-award-fill"></i>
+                                    <span>CISSP</span>
+                                </div>
+                            </div>
+                            <div class="cert-badge cert-badge-3">
+                                <div class="badge-inner">
+                                    <i class="bi bi-trophy-fill"></i>
+                                    <span>CEH</span>
+                                </div>
+                            </div>
+                            <div class="cert-badge cert-badge-4">
+                                <div class="badge-inner">
+                                    <i class="bi bi-patch-check-fill"></i>
+                                    <span>CISM</span>
+                                </div>
+                            </div>
+
+                            <!-- Center Shield -->
+                            <div class="center-shield">
+                                <i class="bi bi-shield-shaded"></i>
+                                <p>Certificados</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Benefits Grid (Optional) -->
+            <div class="row mt-5 g-4">
+                <div class="col-lg-4 col-md-6">
+                    <div class="benefit-card animate-on-scroll">
+                        <div class="benefit-icon">
+                            <i class="bi bi-graph-up-arrow"></i>
+                        </div>
+                        <h4>Validación de Conocimientos</h4>
+                        <p>Las certificaciones demuestran que nuestros profesionales tienen conocimientos actualizados y validados por organizaciones reconocidas.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="benefit-card animate-on-scroll">
+                        <div class="benefit-icon">
+                            <i class="bi bi-globe"></i>
+                        </div>
+                        <h4>Estándares Internacionales</h4>
+                        <p>Cumplimos con los estándares y mejores prácticas reconocidas a nivel mundial en seguridad de la información.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="benefit-card animate-on-scroll">
+                        <div class="benefit-icon">
+                            <i class="bi bi-hand-thumbs-up"></i>
+                        </div>
+                        <h4>Confianza del Cliente</h4>
+                        <p>Generamos confianza al demostrar que nuestro equipo está capacitado para proteger sus activos más valiosos.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Nuestros Servicios Section -->
+    <section id="servicios" class="services-section py-5">
+        <div class="container">
+            <!-- Section Header -->
+            <div class="row justify-content-center mb-5">
+                <div class="col-lg-8 text-center">
+                    <h2 class="section-title animate-on-scroll">Nuestros Servicios</h2>
+                    <p class="section-description animate-on-scroll">
+                        Ofrecemos una amplia gama de servicios de ciberseguridad diseñados para proteger
+                        tu infraestructura digital y mantener tu negocio seguro frente a las amenazas actuales.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Services Grid -->
+            <div class="row g-4">
+                <!-- Service 1: Evaluación de Vulnerabilidades -->
+                <div class="col-lg-3 col-md-6">
+                    <div class="service-card animate-on-scroll">
+                        <div class="service-image">
+                            <div class="service-overlay">
+                                <i class="bi bi-search"></i>
+                            </div>
+                        </div>
+                        <div class="service-content">
+                            <h3>Evaluación de Vulnerabilidades</h3>
+                            <p>
+                                Identificamos y evaluamos las debilidades en tu infraestructura antes de que
+                                puedan ser explotadas por atacantes.
+                            </p>
+                            <a href="#contacto" class="service-btn">
+                                Más información
+                                <i class="bi bi-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Service 2: Monitoreo y Detección -->
+                <div class="col-lg-3 col-md-6">
+                    <div class="service-card animate-on-scroll">
+                        <div class="service-image">
+                            <div class="service-overlay">
+                                <i class="bi bi-radar"></i>
+                            </div>
+                        </div>
+                        <div class="service-content">
+                            <h3>Monitoreo y Detección de Amenazas</h3>
+                            <p>
+                                Vigilancia continua de tu red para detectar y responder a amenazas en tiempo real,
+                                24/7/365.
+                            </p>
+                            <a href="#contacto" class="service-btn">
+                                Más información
+                                <i class="bi bi-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Service 3: Gestión y Respuesta -->
+                <div class="col-lg-3 col-md-6">
+                    <div class="service-card animate-on-scroll">
+                        <div class="service-image">
+                            <div class="service-overlay">
+                                <i class="bi bi-shield-fill-exclamation"></i>
+                            </div>
+                        </div>
+                        <div class="service-content">
+                            <h3>Gestión y Respuesta ante Incidentes</h3>
+                            <p>
+                                Respuesta rápida y coordinada ante incidentes de seguridad para minimizar
+                                el impacto en tu negocio.
+                            </p>
+                            <a href="#contacto" class="service-btn">
+                                Más información
+                                <i class="bi bi-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Service 4: Consultoría -->
+                <div class="col-lg-3 col-md-6">
+                    <div class="service-card animate-on-scroll">
+                        <div class="service-image">
+                            <div class="service-overlay">
+                                <i class="bi bi-people-fill"></i>
+                            </div>
+                        </div>
+                        <div class="service-content">
+                            <h3>Consultoría en Ciberseguridad</h3>
+                            <p>
+                                Asesoramiento experto para diseñar e implementar estrategias de seguridad
+                                alineadas con tus objetivos de negocio.
+                            </p>
+                            <a href="#contacto" class="service-btn">
+                                Más información
+                                <i class="bi bi-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Additional Services Info -->
+            <div class="row mt-5">
+                <div class="col-12 text-center animate-on-scroll">
+                    <div class="services-cta">
+                        <h3>¿Necesitas un servicio personalizado?</h3>
+                        <p>Contáctanos y diseñaremos una solución a medida para tu empresa</p>
+                        <a href="#contacto" class="btn btn-primary btn-lg">
+                            Solicitar consulta gratuita
+                            <i class="bi bi-arrow-right ms-2"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tu Aliado Estratégico Section -->
+    <section id="aliado" class="strategic-ally-section py-5">
+        <div class="container">
+            <div class="row align-items-center g-5">
+                <!-- Content Column -->
+                <div class="col-lg-6">
+                    <div class="ally-content">
+                        <h2 class="section-title mb-4 animate-on-scroll">
+                            Tu aliado estratégico en ciberseguridad
+                        </h2>
+                        <p class="section-description mb-4 animate-on-scroll">
+                            No solo protegemos tu infraestructura, nos convertimos en tu socio estratégico
+                            para garantizar la seguridad, confidencialidad y continuidad de tu negocio.
+                        </p>
+
+                        <!-- Key Points -->
+                        <div class="ally-points">
+                            <div class="ally-point animate-on-scroll">
+                                <div class="point-icon">
+                                    <i class="bi bi-check-circle-fill"></i>
+                                </div>
+                                <div class="point-text">
+                                    <h4>Protección Integral 24/7</h4>
+                                    <p>
+                                        Monitoreo continuo de tu infraestructura digital las 24 horas del día,
+                                        los 7 días de la semana, garantizando respuesta inmediata ante cualquier amenaza.
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="ally-point animate-on-scroll">
+                                <div class="point-icon">
+                                    <i class="bi bi-check-circle-fill"></i>
+                                </div>
+                                <div class="point-text">
+                                    <h4>Experiencia Comprobada</h4>
+                                    <p>
+                                        Más de 10 años protegiendo empresas de diversos sectores con
+                                        estándares internacionales de ciberseguridad.
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="ally-point animate-on-scroll">
+                                <div class="point-icon">
+                                    <i class="bi bi-check-circle-fill"></i>
+                                </div>
+                                <div class="point-text">
+                                    <h4>Tecnología de Vanguardia</h4>
+                                    <p>
+                                        Utilizamos las herramientas y tecnologías más avanzadas para detectar
+                                        y neutralizar amenazas antes de que afecten tu negocio.
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="ally-point animate-on-scroll">
+                                <div class="point-icon">
+                                    <i class="bi bi-check-circle-fill"></i>
+                                </div>
+                                <div class="point-text">
+                                    <h4>Equipo Certificado</h4>
+                                    <p>
+                                        Profesionales con las certificaciones más reconocidas en la industria
+                                        de la ciberseguridad a nivel mundial.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mt-4 animate-on-scroll">
+                            <a href="#contacto" class="btn btn-primary btn-lg">
+                                Conocer más sobre nosotros
+                                <i class="bi bi-arrow-right ms-2"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Image/Graphic Column -->
+                <div class="col-lg-6">
+                    <div class="ally-graphic animate-on-scroll">
+                        <div class="ally-bg-shape"></div>
+                        <div class="ally-image-content">
+                            <div class="shield-graphic">
+                                <i class="bi bi-shield-lock-fill"></i>
+                            </div>
+
+                            <!-- Floating Stats -->
+                            <div class="float-stat stat-1">
+                                <div class="stat-inner">
+                                    <i class="bi bi-lightning-charge-fill"></i>
+                                    <div>
+                                        <h4>99.9%</h4>
+                                        <p>Uptime</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="float-stat stat-2">
+                                <div class="stat-inner">
+                                    <i class="bi bi-clock-fill"></i>
+                                    <div>
+                                        <h4>&lt;15min</h4>
+                                        <p>Respuesta</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="float-stat stat-3">
+                                <div class="stat-inner">
+                                    <i class="bi bi-shield-check"></i>
+                                    <div>
+                                        <h4>500+</h4>
+                                        <p>Amenazas<br>Bloqueadas</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Trust Indicators -->
+            <div class="row mt-5 pt-5 border-top">
+                <div class="col-12 text-center mb-4">
+                    <h3 class="animate-on-scroll">Confianza respaldada por certificaciones</h3>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="trust-badge animate-on-scroll">
+                        <div class="trust-icon">
+                            <i class="bi bi-award-fill"></i>
+                        </div>
+                        <h5>ISO 27001</h5>
+                        <p>Gestión de Seguridad</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="trust-badge animate-on-scroll">
+                        <div class="trust-icon">
+                            <i class="bi bi-patch-check-fill"></i>
+                        </div>
+                        <h5>SOC 2</h5>
+                        <p>Compliance</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="trust-badge animate-on-scroll">
+                        <div class="trust-icon">
+                            <i class="bi bi-shield-fill-check"></i>
+                        </div>
+                        <h5>GDPR</h5>
+                        <p>Protección de Datos</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="trust-badge animate-on-scroll">
+                        <div class="trust-icon">
+                            <i class="bi bi-globe"></i>
+                        </div>
+                        <h5>PCI DSS</h5>
+                        <p>Seguridad de Pagos</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Resultados Section -->
+    <section id="resultados" class="results-section py-5">
+        <div class="container">
+            <div class="row align-items-center g-5">
+                <!-- Image/Graphic Column -->
+                <div class="col-lg-6">
+                    <div class="results-graphic animate-on-scroll">
+                        <div class="results-bg-shape"></div>
+                        <div class="results-image-content">
+                            <div class="graph-container">
+                                <div class="graph-bars">
+                                    <div class="graph-bar bar-1">
+                                        <div class="bar-fill" data-height="85"></div>
+                                        <span class="bar-label">2020</span>
+                                    </div>
+                                    <div class="graph-bar bar-2">
+                                        <div class="bar-fill" data-height="92"></div>
+                                        <span class="bar-label">2021</span>
+                                    </div>
+                                    <div class="graph-bar bar-3">
+                                        <div class="bar-fill" data-height="94"></div>
+                                        <span class="bar-label">2022</span>
+                                    </div>
+                                    <div class="graph-bar bar-4">
+                                        <div class="bar-fill" data-height="97"></div>
+                                        <span class="bar-label">2023</span>
+                                    </div>
+                                    <div class="graph-bar bar-5">
+                                        <div class="bar-fill" data-height="99"></div>
+                                        <span class="bar-label">2024</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Content Column -->
+                <div class="col-lg-6">
+                    <div class="results-content">
+                        <h2 class="section-title mb-4 animate-on-scroll">
+                            Resultados que fortalecen tu seguridad digital
+                        </h2>
+                        <p class="section-description mb-4 animate-on-scroll">
+                            Nuestros clientes experimentan mejoras significativas en su postura de seguridad,
+                            reduciendo incidentes y fortaleciendo su infraestructura digital año tras año.
+                        </p>
+
+                        <!-- Results List -->
+                        <div class="results-list">
+                            <div class="result-item animate-on-scroll">
+                                <div class="result-number">
+                                    <i class="bi bi-graph-up"></i>
+                                </div>
+                                <div class="result-text">
+                                    <h4>Reducción de incidentes</h4>
+                                    <p>
+                                        Disminución del 85% en incidentes de seguridad durante el primer año
+                                        de implementación de nuestras soluciones.
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="result-item animate-on-scroll">
+                                <div class="result-number">
+                                    <i class="bi bi-shield-check"></i>
+                                </div>
+                                <div class="result-text">
+                                    <h4>Cumplimiento normativo</h4>
+                                    <p>
+                                        100% de nuestros clientes logran certificaciones de seguridad y
+                                        cumplimiento de normativas internacionales.
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="result-item animate-on-scroll">
+                                <div class="result-number">
+                                    <i class="bi bi-speedometer2"></i>
+                                </div>
+                                <div class="result-text">
+                                    <h4>Tiempo de respuesta</h4>
+                                    <p>
+                                        Respuesta promedio de menos de 15 minutos ante incidentes críticos,
+                                        minimizando el impacto en las operaciones.
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="result-item animate-on-scroll">
+                                <div class="result-number">
+                                    <i class="bi bi-people-fill"></i>
+                                </div>
+                                <div class="result-text">
+                                    <h4>Capacitación continua</h4>
+                                    <p>
+                                        Formación especializada para equipos internos, creando una cultura de
+                                        seguridad en toda la organización.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Clientes Section -->
+    <section id="clientes" class="clients-section py-5">
+        <div class="container">
+            <!-- Section Header -->
+            <div class="row justify-content-center mb-5">
+                <div class="col-lg-8 text-center">
+                    <h2 class="section-title animate-on-scroll">Clientes que ya confían</h2>
+                    <p class="section-description animate-on-scroll">
+                        Empresas líderes en diversos sectores confían en HackQori para proteger
+                        sus activos digitales más importantes.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Clients Grid -->
+            <div class="row g-4 justify-content-center">
+                <!-- Client 1 -->
+                <div class="col-lg-3 col-md-4 col-6">
+                    <div class="client-card animate-on-scroll">
+                        <div class="client-logo">
+                            <i class="bi bi-building"></i>
+                            <span>Andean Bank S.A.</span>
+                        </div>
+                        <p class="client-sector">Sector Financiero</p>
+                    </div>
+                </div>
+
+                <!-- Client 2 -->
+                <div class="col-lg-3 col-md-4 col-6">
+                    <div class="client-card animate-on-scroll">
+                        <div class="client-logo">
+                            <i class="bi bi-mortarboard-fill"></i>
+                            <span>EduCloud Learning</span>
+                        </div>
+                        <p class="client-sector">Sector Educativo</p>
+                    </div>
+                </div>
+
+                <!-- Client 3 -->
+                <div class="col-lg-3 col-md-4 col-6">
+                    <div class="client-card animate-on-scroll">
+                        <div class="client-logo">
+                            <i class="bi bi-hospital"></i>
+                            <span>ClinicaNet Plus</span>
+                        </div>
+                        <p class="client-sector">Sector Salud</p>
+                    </div>
+                </div>
+
+                <!-- Client 4 -->
+                <div class="col-lg-3 col-md-4 col-6">
+                    <div class="client-card animate-on-scroll">
+                        <div class="client-logo">
+                            <i class="bi bi-globe-americas"></i>
+                            <span>Agriculture Export</span>
+                        </div>
+                        <p class="client-sector">Sector Agroindustrial</p>
+                    </div>
+                </div>
+
+                <!-- Client 5 -->
+                <div class="col-lg-3 col-md-4 col-6">
+                    <div class="client-card animate-on-scroll">
+                        <div class="client-logo">
+                            <i class="bi bi-shop"></i>
+                            <span>MegaStore</span>
+                        </div>
+                        <p class="client-sector">Sector Retail</p>
+                    </div>
+                </div>
+
+                <!-- Client 6 -->
+                <div class="col-lg-3 col-md-4 col-6">
+                    <div class="client-card animate-on-scroll">
+                        <div class="client-logo">
+                            <i class="bi bi-airplane-fill"></i>
+                            <span>FlyeSmart S.A.C</span>
+                        </div>
+                        <p class="client-sector">Sector Turismo</p>
+                    </div>
+                </div>
+
+                <!-- Client 7 -->
+                <div class="col-lg-3 col-md-4 col-6">
+                    <div class="client-card animate-on-scroll">
+                        <div class="client-logo">
+                            <i class="bi bi-truck"></i>
+                            <span>TransAndes Logística</span>
+                        </div>
+                        <p class="client-sector">Sector Logístico</p>
+                    </div>
+                </div>
+
+                <!-- Client 8 -->
+                <div class="col-lg-3 col-md-4 col-6">
+                    <div class="client-card animate-on-scroll">
+                        <div class="client-logo">
+                            <i class="bi bi-shield-shaded"></i>
+                            <span>Seguridad Solutions</span>
+                        </div>
+                        <p class="client-sector">Sector Seguridad</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Stats Row -->
+            <div class="row mt-5 pt-4">
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="client-stat animate-on-scroll">
+                        <h3 class="stat-number" data-target="150" data-suffix="">0</h3>
+                        <p>Clientes Satisfechos</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="client-stat animate-on-scroll">
+                        <h3 class="stat-number" data-target="15" data-suffix="">0</h3>
+                        <p>Sectores Industriales</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="client-stat animate-on-scroll">
+                        <h3 class="stat-number" data-target="8" data-suffix="">0</h3>
+                        <p>Países en Latinoamérica</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="client-stat animate-on-scroll">
+                        <h3 class="stat-number" data-target="99" data-suffix="%">0</h3>
+                        <p>% Tasa de Retención</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Evaluation Section -->
+    <section id="evaluacion" class="evaluation-cta-section py-5">
+        <div class="container">
+            <div class="evaluation-wrapper">
+                <div class="row align-items-center g-5">
+                    <!-- Content Column -->
+                    <div class="col-lg-7">
+                        <div class="cta-content">
+                            <h2 class="cta-title animate-on-scroll">
+                                Evalúa la seguridad de tu empresa hoy
+                            </h2>
+                            <p class="cta-description animate-on-scroll">
+                                Solicita una auditoría gratuita de tu infraestructura digital y descubre
+                                cómo HackQori puede ayudarte a identificar y mitigar riesgos antes de que
+                                se conviertan en problemas reales.
+                            </p>
+                            <ul class="cta-benefits animate-on-scroll">
+                                <li>
+                                    <i class="bi bi-check-circle-fill"></i>
+                                    <span>Evaluación gratuita sin compromiso</span>
+                                </li>
+                                <li>
+                                    <i class="bi bi-check-circle-fill"></i>
+                                    <span>Reporte detallado de vulnerabilidades</span>
+                                </li>
+                                <li>
+                                    <i class="bi bi-check-circle-fill"></i>
+                                    <span>Recomendaciones personalizadas</span>
+                                </li>
+                                <li>
+                                    <i class="bi bi-check-circle-fill"></i>
+                                    <span>Consultoría con expertos certificados</span>
+                                </li>
+                            </ul>
+                            <div class="mt-4 animate-on-scroll">
+                                <a href="#contacto" class="btn btn-dark btn-lg cta-button">
+                                    Solicitar evaluación gratuita
+                                    <i class="bi bi-arrow-right ms-2"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Image/Graphic Column -->
+                    <div class="col-lg-5">
+                        <div class="cta-graphic animate-on-scroll">
+                            <div class="security-badge">
+                                <div class="badge-ring ring-1"></div>
+                                <div class="badge-ring ring-2"></div>
+                                <div class="badge-ring ring-3"></div>
+                                <div class="badge-center">
+                                    <i class="bi bi-shield-fill-check"></i>
+                                    <h4>Auditoría<br>Gratuita</h4>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonios Section -->
+    <section id="testimonios" class="testimonials-section py-5">
+        <div class="container">
+            <!-- Section Header -->
+            <div class="row justify-content-center mb-5">
+                <div class="col-lg-8 text-center">
+                    <h2 class="section-title animate-on-scroll">Testimonios</h2>
+                    <p class="section-description animate-on-scroll">
+                        Descubre lo que nuestros clientes dicen sobre su experiencia trabajando con HackQori
+                    </p>
+                </div>
+            </div>
+
+            <!-- Testimonials Carousel -->
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    <div id="testimonialsCarousel" class="carousel slide" data-bs-ride="carousel">
+                        <div class="carousel-indicators">
+                            <button type="button" data-bs-target="#testimonialsCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                            <button type="button" data-bs-target="#testimonialsCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                            <button type="button" data-bs-target="#testimonialsCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                        </div>
+
+                        <div class="carousel-inner">
+                            <!-- Testimonial 1 -->
+                            <div class="carousel-item active">
+                                <div class="testimonial-card">
+                                    <div class="stars mb-3">
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                    </div>
+                                    <p class="testimonial-text">
+                                        "HackQori nos ayudó a elevar nuestra seguridad digital a otro nivel. Su equipo de expertos
+                                        identificó vulnerabilidades que desconocíamos y nos brindó soluciones efectivas. Desde que
+                                        trabajamos con ellos, no hemos tenido ningún incidente de seguridad. Altamente recomendados."
+                                    </p>
+                                    <div class="testimonial-author">
+                                        <div class="author-avatar">
+                                            <i class="bi bi-person-circle"></i>
+                                        </div>
+                                        <div class="author-info">
+                                            <h5>Carlos Mendoza</h5>
+                                            <p>CTO, Andean Bank S.A.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Testimonial 2 -->
+                            <div class="carousel-item">
+                                <div class="testimonial-card">
+                                    <div class="stars mb-3">
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                    </div>
+                                    <p class="testimonial-text">
+                                        "La implementación de las soluciones de HackQori fue impecable. El equipo mostró un alto nivel
+                                        de profesionalismo y conocimiento técnico. Nos sentimos mucho más seguros sabiendo que nuestra
+                                        infraestructura está protegida las 24 horas del día por verdaderos expertos en ciberseguridad."
+                                    </p>
+                                    <div class="testimonial-author">
+                                        <div class="author-avatar">
+                                            <i class="bi bi-person-circle"></i>
+                                        </div>
+                                        <div class="author-info">
+                                            <h5>María González</h5>
+                                            <p>Directora de TI, EduCloud Learning</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Testimonial 3 -->
+                            <div class="carousel-item">
+                                <div class="testimonial-card">
+                                    <div class="stars mb-3">
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                    </div>
+                                    <p class="testimonial-text">
+                                        "Trabajar con HackQori ha sido una experiencia excepcional. Su enfoque proactivo en la detección
+                                        de amenazas y su rápida respuesta ante incidentes nos ha dado la tranquilidad que necesitábamos.
+                                        Son verdaderos socios estratégicos en nuestra seguridad digital."
+                                    </p>
+                                    <div class="testimonial-author">
+                                        <div class="author-avatar">
+                                            <i class="bi bi-person-circle"></i>
+                                        </div>
+                                        <div class="author-info">
+                                            <h5>Roberto Silva</h5>
+                                            <p>Gerente General, ClinicaNet Plus</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Carousel Controls -->
+                        <button class="carousel-control-prev" type="button" data-bs-target="#testimonialsCarousel" data-bs-slide="prev">
+                            <i class="bi bi-chevron-left"></i>
+                            <span class="visually-hidden">Anterior</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#testimonialsCarousel" data-bs-slide="next">
+                            <i class="bi bi-chevron-right"></i>
+                            <span class="visually-hidden">Siguiente</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contacto Section -->
+    <section id="contacto" class="contact-section py-5">
+        <div class="container">
+            <!-- Section Header -->
+            <div class="row justify-content-center mb-5">
+                <div class="col-lg-8 text-center">
+                    <h2 class="section-title animate-on-scroll">Contacto</h2>
+                    <p class="section-description animate-on-scroll">
+                        ¿Tienes alguna pregunta o necesitas una consulta? <br> Contáctanos y te responderemos en menos de 24 horas
+                    </p>
+                </div>
+            </div>
+
+            <div class="row g-5">
+                <div class="col-lg-6">
+                    <div class="contact-info">
+                        <h3 class="mb-4 animate-on-scroll">Información de Contacto</h3>
+
+                        <div class="contact-item animate-on-scroll">
+                            <div class="contact-icon">
+                                <i class="bi bi-geo-alt-fill"></i>
+                            </div>
+                            <div class="contact-details">
+                                <h5>Dirección</h5>
+                                <p>Av. Javier Prado Este 476, San Isidro<br>Lima, Perú</p>
+                            </div>
+                        </div>
+
+                        <div class="contact-item animate-on-scroll">
+                            <div class="contact-icon">
+                                <i class="bi bi-telephone-fill"></i>
+                            </div>
+                            <div class="contact-details">
+                                <h5>Teléfono</h5>
+                                <p>+51 1 234 5678<br>+51 999 888 777</p>
+                            </div>
+                        </div>
+
+                        <div class="contact-item animate-on-scroll">
+                            <div class="contact-icon">
+                                <i class="bi bi-envelope-fill"></i>
+                            </div>
+                            <div class="contact-details">
+                                <h5>Email</h5>
+                                <p>info@hackqori.com<br>ventas@hackqori.com</p>
+                            </div>
+                        </div>
+
+                        <div class="contact-item animate-on-scroll">
+                            <div class="contact-icon">
+                                <i class="bi bi-clock-fill"></i>
+                            </div>
+                            <div class="contact-details">
+                                <h5>Horario de Atención</h5>
+                                <p>Lunes - Viernes: 9:00 AM - 6:00 PM<br>Sábado: 9:00 AM - 1:00 PM</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="contact-form-wrapper animate-on-scroll">
+                        <h3 class="mb-4">Envíanos un Mensaje</h3>
+                        <form id="contactForm" action="https://formspree.io/f/xgvnbyrl" method="POST">
+                            <div class="row g-3">
+                                <!-- Nombre -->
+                                <div class="col-12">
+                                    <div class="form-floating">
+                                        <input type="text" class="form-control" id="name" name="name" placeholder="Tu Nombre" required>
+                                        <label for="name">Nombre Completo</label>
+                                    </div>
+                                </div>
+                                <!-- Correo -->
+                                <div class="col-12">
+                                    <div class="form-floating">
+                                        <input type="email" class="form-control" id="email" name="email" placeholder="Tu Email" required>
+                                        <label for="email">Correo Electrónico</label>
+                                    </div>
+                                </div>
+                                <!-- Teléfono -->
+                                <div class="col-12">
+                                    <div class="form-floating">
+                                        <input type="tel" class="form-control" id="phone" name="phone" placeholder="Tu Teléfono">
+                                        <label for="phone">Teléfono (Opcional)</label>
+                                    </div>
+                                </div>
+                                <!-- Asunto (Selector de Servicios) -->
+                                <div class="col-12">
+                                    <div class="form-floating">
+                                        <select class="form-select" id="subject" name="subject" required>
+                                            <option value="" selected disabled>Selecciona un asunto...</option>
+                                            <option value="Evaluación de Vulnerabilidades">Evaluación de Vulnerabilidades</option>
+                                            <option value="Monitoreo y Detección de Amenazas">Monitoreo y Detección de Amenazas</option>
+                                            <option value="Gestión y Respuesta ante Incidentes">Gestión y Respuesta ante Incidentes</option>
+                                            <option value="Consultoría en Ciberseguridad">Consultoría en Ciberseguridad</option>
+                                            <option value="Otros">Otros</option>
+                                        </select>
+                                        <label for="subject">Asunto</label>
+                                    </div>
+                                </div>
+                                <!-- Mensaje -->
+                                <div class="col-12">
+                                    <div class="form-floating">
+                                        <textarea class="form-control" id="message" name="message" placeholder="Tu Mensaje" style="height: 150px;" required></textarea>
+                                        <label for="message">Tu Mensaje</label>
+                                    </div>
+                                </div>
+                                <!-- Submit Button -->
+                                <div class="col-12">
+                                    <button type="submit" class="btn btn-primary btn-lg w-100 d-flex align-items-center justify-content-center">
+                                        <span class="submit-text"><i class="bi bi-send-fill me-2"></i> Enviar Mensaje</span>
+                                        <span class="spinner-border spinner-border-sm d-none" role="status" aria-hidden="true"></span>
+                                        <span class="loading-text d-none ms-2">Enviando...</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                        <!-- Form Status -->
+                        <div id="formStatus" class="mt-3"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-top py-5">
+            <div class="container">
+                <div class="row g-4">
+                    <!-- About Column -->
+                    <div class="col-lg-4 col-md-6">
+                        <div class="footer-about">
+                            <div class="footer-logo mb-3">
+                                <img src="img/logo.png" alt="HackQori Logo" class="footer-logo-img">
+                                <span class="footer-brand">HACKQORI</span>
+                            </div>
+                            <p class="footer-description">
+                                Protegemos tu negocio con soluciones avanzadas de ciberseguridad.
+                                Más de 10 años de experiencia respaldando la seguridad digital de empresas líderes.
+                            </p>
+                            <div class="footer-social">
+                                <a href="#" class="footer-social-link">
+                                    <i class="bi bi-facebook"></i>
+                                </a>
+                                <a href="#" class="footer-social-link">
+                                    <i class="bi bi-twitter-x"></i>
+                                </a>
+                                <a href="#" class="footer-social-link">
+                                    <i class="bi bi-linkedin"></i>
+                                </a>
+                                <a href="#" class="footer-social-link">
+                                    <i class="bi bi-instagram"></i>
+                                </a>
+                                <a href="#" class="footer-social-link">
+                                    <i class="bi bi-youtube"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Quick Links Column -->
+                    <div class="col-lg-2 col-md-6">
+                        <div class="footer-links">
+                            <h5 class="footer-title">Enlaces Rápidos</h5>
+                            <ul class="footer-menu">
+                                <li><a href="#hero">Inicio</a></li>
+                                <li><a href="#nosotros">Nosotros</a></li>
+                                <li><a href="#servicios">Servicios</a></li>
+                                <li><a href="#clientes">Clientes</a></li>
+                                <li><a href="#testimonios">Testimonios</a></li>
+                                <li><a href="#contacto">Contacto</a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Services Column -->
+                    <div class="col-lg-3 col-md-6">
+                        <div class="footer-links">
+                            <h5 class="footer-title">Servicios</h5>
+                            <ul class="footer-menu">
+                                <li><a href="#servicios">Evaluación de Vulnerabilidades</a></li>
+                                <li><a href="#servicios">Monitoreo y Detección</a></li>
+                                <li><a href="#servicios">Gestión de Incidentes</a></li>
+                                <li><a href="#servicios">Consultoría</a></li>
+                                <li><a href="#servicios">Capacitación</a></li>
+                                <li><a href="#servicios">Auditorías</a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Contact Column -->
+                    <div class="col-lg-3 col-md-6">
+                        <div class="footer-contact">
+                            <h5 class="footer-title">Contacto</h5>
+                            <ul class="footer-contact-list">
+                                <li>
+                                    <i class="bi bi-geo-alt-fill"></i>
+                                    <span>Av. Javier Prado Este 476<br>San Isidro, Lima</span>
+                                </li>
+                                <li>
+                                    <i class="bi bi-telephone-fill"></i>
+                                    <span>+51 1 234 5678</span>
+                                </li>
+                                <li>
+                                    <i class="bi bi-envelope-fill"></i>
+                                    <span>info@hackqori.com</span>
+                                </li>
+                                <li>
+                                    <i class="bi bi-clock-fill"></i>
+                                    <span>Lun - Vie: 9:00 AM - 6:00 PM</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer Bottom -->
+        <div class="footer-bottom py-3">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
+                        <p class="footer-copyright mb-0">
+                            &copy; 2024 <strong>HackQori</strong>. Todos los derechos reservados.
+                        </p>
+                    </div>
+                    <div class="col-md-6 text-center text-md-end">
+                        <ul class="footer-bottom-links">
+                            <li><a href="#">Política de Privacidad</a></li>
+                            <li><a href="#">Términos y Condiciones</a></li>
+                            <li><a href="#">Cookies</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Back to Top Button -->
+        <button id="backToTop" class="back-to-top">
+            <i class="bi bi-arrow-up"></i>
+        </button>
+    </footer>
+
+    <!-- Bootstrap 5 JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Custom JS -->
+    <script src="js/cookie-consent.js"></script>
+    <script src="js/contact-form.js"></script>
+    <script src="js/main.js"></script>
+
+</body>
+</html>

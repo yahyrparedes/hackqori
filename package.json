@@ -1,0 +1,23 @@
+{
+  "name": "hackqori",
+  "version": "1.0.0",
+  "description": "Landing page corporativa de HackQori - Soluciones avanzadas de ciberseguridad",
+  "main": "index.html",
+  "scripts": {
+    "dev": "browser-sync start --server --files '**/*.html, css/*.css, js/*.js' --port 3000 --no-notify --open"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yahyrparedes/hackqori.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/yahyrparedes/hackqori/issues"
+  },
+  "homepage": "https://github.com/yahyrparedes/hackqori#readme",
+  "devDependencies": {
+    "browser-sync": "^3.0.4"
+  }
+}
