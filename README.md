@@ -94,7 +94,6 @@ Esto abrirá automáticamente el navegador en `http://localhost:3000`. Los cambi
 ## 📝 Scripts Disponibles
 
 - `npm run dev` - Inicia servidor de desarrollo con hot-reload
-- `npm start` - Alias para `npm run dev`
 
 ## 🌐 Navegador Soportados
 
